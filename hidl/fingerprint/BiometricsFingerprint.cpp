@@ -99,7 +99,7 @@ Return<void> BiometricsFingerprint::onFingerDown(uint32_t x, uint32_t y, float m
     if (!this->isEnrolling) {
         setDimlayerHbm(1);
     }
-    return mOplusBiometricsFingerprint->onFingerDown(x, y, minor, major);
+    return isUff() ? Void() : mOplusBiometricsFingerprint->onFingerDown(x, y, minor, major);
 }
 
 Return<void> BiometricsFingerprint::onFingerUp() {
@@ -107,7 +107,7 @@ Return<void> BiometricsFingerprint::onFingerUp() {
     if (!this->isEnrolling) {
         setDimlayerHbm(1);
     }
-    return mOplusBiometricsFingerprint->onFingerUp();
+    return isUff() ? Void() : mOplusBiometricsFingerprint->onFingerUp();
 }
 
 Return<void> BiometricsFingerprint::onEnrollResult(uint64_t deviceId, uint32_t fingerId,
